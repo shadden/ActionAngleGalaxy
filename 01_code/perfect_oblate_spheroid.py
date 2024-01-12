@@ -5,12 +5,7 @@ import sympy as sp
 def Gfn(x,e):
     return -1 * (x/e) * np.arctan(e * x / np.sqrt(1-e*e))
 
-def get_POSP_hamiltonian(ecc,u1,u2,v_star):
-    
-    # Set up functional form of Hamiltonian
-    u,v = sp.symbols("u,v",real=True)
-    pu,pv = sp.symbols("p_u,p_v",real=True)
-    e,L = sp.symbols("e,L",positive=True)
+def get_POS_potential(e,u,v):
     coshu = sp.cosh(u)
     cosv = sp.cos(v)
     sinhu = sp.sinh(u)
@@ -18,6 +13,17 @@ def get_POSP_hamiltonian(ecc,u1,u2,v_star):
     U = -1 * coshu * sp.atan(e*coshu/sp.sqrt(1-e*e))/e
     V = -1 * cosv * sp.atan(e*cosv/sp.sqrt(1-e*e))/e
     Phi = (U-V)/(sinv*sinv + sinhu*sinhu)
+    return Phi
+
+def get_POSP_hamiltonian(ecc,u1,u2,v_star):
+    
+    # Set up functional form of Hamiltonian
+    u,v = sp.symbols("u,v",real=True)
+    pu,pv = sp.symbols("p_u,p_v",real=True)
+    e,L = sp.symbols("e,L",positive=True)
+    Phi = get_POS_potential(ecc,u,v)
+    sinhu = sp.sinh(u)
+    sinv = sp.sin(v)
     T = (pu*pu + pv*pv)/2/e/e/(sinv*sinv + sinhu*sinhu) + L*L/2/e/e/sinhu**2/sinv**2
     H = T + Phi
     
