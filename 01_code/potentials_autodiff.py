@@ -50,6 +50,34 @@ def get_derivs(f,x0,dmax):
             derivs[(i,j)] = Dn_f_val[create_tuple(i,j)]
     return derivs
 
+def get_derivs_func_dict(f,dmax):
+    """
+    Compute the partial derivatives of the function, `f`, of a two-dimensional
+    input evaluated at the point `x0` up to a maximum order, `dmax`.
+
+    Parameters
+    ----------
+    f : function
+        function to take derivatives of
+    x0 : jnp.array
+        point at whcih to evaluate derivatives
+    dmax : int
+        maximum order of derivatives
+
+    Returns
+    -------
+    dict
+        Dictionary storing partial derivative values.
+    """
+    deriv_fns = {(0,0):f}
+    for d in range(1,dmax+1):
+        for n1 in range(d+1):
+            if d-n1 >= 1:
+                deriv_fns[(d-n1,n1)] = jax.jacfwd(deriv_fns[(d-n1-1,n1)],argnums=0)
+            else:
+                deriv_fns[(d-n1,n1)] = jax.jacfwd(deriv_fns[(d-n1,n1-1)],argnums=1)
+    return deriv_fns
+
 from scipy.special import binom, gamma
 factorial = lambda n: gamma(n+1)
 from math import sqrt
