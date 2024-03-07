@@ -3,7 +3,6 @@ from sympy import sqrt
 import numpy as np
 import celmech as cm
 from collections import defaultdict
-from PoissonSeriesPerturbationTheory import PoissonSeries, PSTerm
 from scipy.special import binom
 import jax
 from jax import config

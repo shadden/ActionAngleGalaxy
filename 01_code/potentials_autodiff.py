@@ -1,7 +1,7 @@
 import jax.numpy as jnp
 from math import sqrt
 import jax
-from celmech.poisson_series_manipulate import PSTerm, PoissonSeries
+from celmech.poisson_series import PSTerm, PoissonSeries
 
 def create_tuple(n, m):
     """
@@ -136,7 +136,7 @@ def PotentialDerivativesToPoissonSeries(derivs_dict,nmax):
     return Hdict
 #
 from collections import defaultdict
-from celmech.poisson_series_manipulate import expL,expLinv
+from celmech.poisson_series import expLinv
 def soln(ics,kappa,nu,Hav,chi):
     xR_series,xz_series = [ defaultdict(lambda: PoissonSeries(2,0)) for _ in range(2)]
     xR_series[1]=PoissonSeries.from_PSTerms([PSTerm(1,[1,0],[0,0],[],[])])
