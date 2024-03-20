@@ -1,0 +1,9 @@
+01_code/integations_1.npz
+01_code/__pycache__/potentials_autodiff.cpython-311.pyc
+01_code/__pycache__/staeckel_utils.cpython-311.pyc
+02_notebooks/Miyamoto-Nagai-Potential.ipynb
+02_notebooks/Miyomato-Nagai-mmr.ipynb
+02_notebooks/SFMR_example.ipynb
+03_Mathematica_notebooks/SFMR_model.nb
+03_Mathematica_notebooks/StaeckelPotentials.nb
+*.ipynb
