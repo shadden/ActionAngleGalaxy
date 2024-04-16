@@ -1,6 +1,7 @@
 import numpy as np
 from MiyamotoNagaiPotential import *
 import sys
+savedir = "/fs/lustre/cita/hadden/05_action_angle_galaxy/03_results/"
 I = int(sys.argv[1])
 v_factor = np.linspace(0,0.25)[I]
 N_angles = 50
@@ -10,8 +11,8 @@ Rc = MiyamotoNagai_L_to_Rc(NL,Na,Nb)
 ics = [0,Rc,0,NL,0,0]
 ham = MiyamotoNagai_get_hamiltonian_full(ics,Na,Nb)
 
-kappa0 = np.sqrt(-1 * ham.calculate_jacobian()[2,0])
-nu0 = np.sqrt(-1 * ham.calculate_jacobian()[3,1])
+kappa0 = np.sqrt(-1 * ham.calculate_jacobian()[3,1])
+nu0 = np.sqrt(-1 * ham.calculate_jacobian()[4,2])
 
 Ntimes = 512
 T = 2 * np.pi / kappa0
@@ -34,4 +35,4 @@ for J,theta in enumerate(angles):
     orbit = all_orbits[J]
     all_xR[J] = np.sqrt(0.5*kappa0) * ((orbit[1] - Rc) + 1j * orbit[3]/kappa0)
     all_xz[J] = np.sqrt(0.5*nu0) * (orbit[2] + 1j * orbit[4]/nu0)
-np.savez_compressed("3d_integations_{}".format(I),orbit=all_orbits,times=times,xR=all_xR,xz=all_xz)
+np.savez_compressed(savedir+"3d_integations_{}".format(I),orbit=all_orbits,times=times,xR=all_xR,xz=all_xz)
