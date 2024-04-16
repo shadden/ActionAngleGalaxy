@@ -7,3 +7,7 @@
 03_Mathematica_notebooks/SFMR_model.nb
 03_Mathematica_notebooks/StaeckelPotentials.nb
 *.ipynb
+01_code/__pycache__/MiyamotoNagaiPotential.cpython-311.pyc
+04_figures/actions_pade_vs_staeck.png
+04_figures/actions_rms_error.png
+04_figures/freq_error.png
