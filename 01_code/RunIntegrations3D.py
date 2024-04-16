@@ -11,8 +11,8 @@ Rc = MiyamotoNagai_L_to_Rc(NL,Na,Nb)
 ics = [0,Rc,0,NL,0,0]
 ham = MiyamotoNagai_get_hamiltonian_full(ics,Na,Nb)
 
-kappa0 = np.sqrt(-1 * ham.calculate_jacobian()[3,1])
-nu0 = np.sqrt(-1 * ham.calculate_jacobian()[4,2])
+kappa0 = np.sqrt(-1 * ham.calculate_jacobian()[4,1])
+nu0 = np.sqrt(-1 * ham.calculate_jacobian()[5,2])
 
 Ntimes = 512
 T = 2 * np.pi / kappa0
@@ -33,6 +33,6 @@ for J,theta in enumerate(angles):
         ham.integrate(t)
         all_orbits[J,:,i] = ham.state.values
     orbit = all_orbits[J]
-    all_xR[J] = np.sqrt(0.5*kappa0) * ((orbit[1] - Rc) + 1j * orbit[3]/kappa0)
-    all_xz[J] = np.sqrt(0.5*nu0) * (orbit[2] + 1j * orbit[4]/nu0)
+    all_xR[J] = np.sqrt(0.5*kappa0) * ((orbit[1] - Rc) + 1j * orbit[4]/kappa0)
+    all_xz[J] = np.sqrt(0.5*nu0) * (orbit[2] + 1j * orbit[5]/nu0)
 np.savez_compressed(savedir+"3d_integations_{}".format(I),orbit=all_orbits,times=times,xR=all_xR,xz=all_xz)
