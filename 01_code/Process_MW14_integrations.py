@@ -1,6 +1,5 @@
 from SeriesUtils import *
 from MWPotential2014 import MWPotential2014_get_hamiltonian
-from potentials_autodiff import PotentialDerivativesToPoissonSeries
 from celmech.poisson_series import PoissonSeries,PSTerm
 from celmech.poisson_series import expL,expLinv, bracket
 from celmech.poisson_series import birkhoff_normalize
@@ -29,7 +28,7 @@ except:
         for l in range(n+1):
             nR = n-l
             nz = l
-            derivs[(nR,nz)]=sp.diff(mw2014ham.N_H,R,nR,z,nz).xreplace(rule)
+            derivs[(nR,nz)]=float(sp.diff(mw2014ham.N_H,R,nR,z,nz).xreplace(rule))
     with open(derivs_file,"wb") as fi:
         pickle.dump(derivs,fi)
 
