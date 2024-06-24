@@ -30,7 +30,7 @@ def MWPotential2014_get_hamiltonian(ics,NL,\
     phi_disk = - A1 / sp.sqrt(R * R + z_term * z_term)
     pars[a] = a_disk
     pars[b] = b_disk
-    
+
     # NFW halo
     r_s = sp.symbols("r_s",positive = True)
     r_by_r_s = r / r_s
@@ -40,7 +40,7 @@ def MWPotential2014_get_hamiltonian(ics,NL,\
     # power-law bulge
     alpha,rC = sp.symbols("alpha,r_C",positive=True)
     r_by_rC = r/rC
-    phi_bulge = A3 * 2 * sp.pi * (1/rC)**alpha * rC**2 
+    phi_bulge = A3 * 2 * sp.pi * (1/rC)**alpha * rC**2
     phi_bulge *=(sp.lowergamma(1-alpha/2,r_by_rC**2) - (1/r_by_rC) * sp.lowergamma((3-alpha)/2,r_by_rC**2))
     pars[alpha] = alpha_bulge
     pars[rC] = rC_bulge
@@ -64,7 +64,7 @@ def MWPotential2014_get_hamiltonian_full(ics,\
     phi,R,z,L,pR,pz = sp.symbols("phi,R,z,L,p_R,p_z",real=True)
     r = sp.sqrt(R*R + z*z)
     A1,A2,A3 = sp.symbols("A(1:4)",positive = True)
-    pars = {L:NL,A1:A_disk,A2:A_halo,A3:A_bulge}
+    pars = {A1:A_disk,A2:A_halo,A3:A_bulge}
 
     # Miyamoto-Nagai disk
     a,b = sp.symbols("a,b",positive = True)
@@ -72,7 +72,7 @@ def MWPotential2014_get_hamiltonian_full(ics,\
     phi_disk = - A1 / sp.sqrt(R * R + z_term * z_term)
     pars[a] = a_disk
     pars[b] = b_disk
-    
+
     # NFW halo
     r_s = sp.symbols("r_s",positive = True)
     r_by_r_s = r / r_s
@@ -82,7 +82,7 @@ def MWPotential2014_get_hamiltonian_full(ics,\
     # power-law bulge
     alpha,rC = sp.symbols("alpha,r_C",positive=True)
     r_by_rC = r/rC
-    phi_bulge = A3 * 2 * sp.pi * (1/rC)**alpha * rC**2 
+    phi_bulge = A3 * 2 * sp.pi * (1/rC)**alpha * rC**2
     phi_bulge *=(sp.lowergamma(1-alpha/2,r_by_rC**2) - (1/r_by_rC) * sp.lowergamma((3-alpha)/2,r_by_rC**2))
     pars[alpha] = alpha_bulge
     pars[rC] = rC_bulge
