@@ -11,6 +11,8 @@
 *.png
 *.npy
 *.json
+*.npz
+*.pdf
 01_code/__pycache__/MiyamotoNagaiPotential.cpython-311.pyc
 04_figures/actions_pade_vs_staeck.png
 04_figures/actions_rms_error.png
