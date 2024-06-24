@@ -1,6 +1,5 @@
 from SeriesUtils import *
 from MWPotential2014 import MWPotential2014_get_hamiltonian
-from potentials_autodiff import PotentialDerivativesToPoissonSeries
 from celmech.poisson_series import PoissonSeries,PSTerm
 from celmech.poisson_series import expL,expLinv, bracket
 from celmech.poisson_series import birkhoff_normalize
