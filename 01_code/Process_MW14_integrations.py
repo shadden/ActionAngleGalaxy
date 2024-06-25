@@ -106,7 +106,7 @@ data3d = srcdir+finame3d_template.format(i)
 #   birkhoff normalization quantities
 xRs = data['xR'][1:]
 xzs = data['xz'][1:]
-expIphi = data['orbit'][1:,0,:]
+expIphi = np.exp(1j * data['orbit'][1:,0,:])
 time = data['times']
 xRs_mean = xR_osc_to_mean_f(xRs,xzs)
 xzs_mean = xz_osc_to_mean_f(xRs,xzs)
