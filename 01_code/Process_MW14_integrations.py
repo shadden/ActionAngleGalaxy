@@ -138,7 +138,7 @@ from galpy.actionAngle import actionAngleStaeckel
 Delta = estimateDeltaStaeckel(mwp,1.,0.)
 aAS = actionAngleStaeckel(pot=mwp,delta = Delta, c=True)
 R,z,vR,vz = data['orbit'][1:,:,0].T
-_,_,_,Omega_R_staeck, Omega_z_staeck, Omega_phi_staeck = aAS.actionsFreqs(R,vR,1/R,z,vz)
+_,_,_,Omega_R_staeck, Omega_phi_staeck, Omega_z_staeck = aAS.actionsFreqs(R,vR,1/R,z,vz)
 
 save_name = srcdir+"mw14_integations_frequencies_and_actions_{}.npz".format(i)
 np.savez_compressed(
