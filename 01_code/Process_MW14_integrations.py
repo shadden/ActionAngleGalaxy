@@ -101,7 +101,7 @@ i = int(sys.argv[1])
 finame = srcdir+finame_template.format(i)
 data = np.load(finame)
 staeck_data = np.load(srcdir + staeck_actions_finame.format(i))
-data3d = srcdir+finame3d_template.format(i)
+data3d = np.load(srcdir+finame3d_template.format(i))
 
 #   birkhoff normalization quantities
 xRs = data['xR'][1:]
