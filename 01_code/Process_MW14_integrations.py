@@ -140,7 +140,7 @@ aAS = actionAngleStaeckel(pot=mwp,delta = Delta, c=True)
 R,z,vR,vz = data['orbit'][1:,:,0].T
 _,_,_,Omega_R_staeck, Omega_z_staeck, Omega_phi_staeck = aAS.actionsFreqs(R,vR,1/R,z,vz)
 
-save_name = srcdir+"mw14_integations_and_actions_{}.npz".format(i)
+save_name = srcdir+"mw14_integations_frequencies_and_actions_{}.npz".format(i)
 np.savez_compressed(
     save_name,
     times=data['times'],
@@ -154,5 +154,17 @@ np.savez_compressed(
     xR_pade2 = xRs_pade2,
     xz_pade2 = xzs_pade2,
     JR_staeckel = JRs_staeck,
-    Jz_staeckel = Jzs_staeck
+    Jz_staeckel = Jzs_staeck,
+    Omega_R_pade1 = Omega_R_pade1,
+    Omega_R_pade2 = Omega_R_pade2,
+    Omega_z_pade1 = Omega_z_pade1,
+    Omega_z_pade2 = Omega_z_pade2,
+    Omega_phi_pade1 = Omega_phi_pade1,
+    Omega_phi_pade2 = Omega_phi_pade2,
+    Omega_R_staeck = Omega_R_staeck,
+    Omega_z_staeck = Omega_z_staeck,
+    Omega_phi_staeck = Omega_phi_staeck,
+    Omega_R_N = Omega_R_N,
+    Omega_z_N = Omega_z_N,
+    Omega_phi_N = Omega_phi_N
 )
